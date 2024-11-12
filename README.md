@@ -33,3 +33,6 @@
 #### 쿠폰 조회
 
 - 사용자는 자신이 사용한 쿠폰을 조회할 수 있습니다. JPA를 사용하여 데이터베이스에서 쿠폰 정보를 조회합니다.
+
+#### 흐름도
+<img width="498" alt="flow" src="https://github.com/user-attachments/assets/8747bb43-ba93-4d04-a3a2-85fbf048929d">
