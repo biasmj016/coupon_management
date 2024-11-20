@@ -41,11 +41,11 @@ class CouponRepositoryTest {
     @Test
     void save() {
         CouponRepository couponRepository = new CouponRepository.CouponRepositoryImpl(couponJpaRepository);
-        Event event = eventJpaRepository.findById(1L).get().toDomain();
+        Event event = eventJpaRepository.findById(1L).orElseThrow().toDomain();
         Coupon savedCoupon = couponRepository.save(new Coupon(event, "member1"));
         assertThat(savedCoupon).isNotNull();
 
-        Coupon coupon = couponJpaRepository.findById(savedCoupon.couponID()).get().toDomain();
+        Coupon coupon = couponJpaRepository.findById(savedCoupon.couponID()).orElseThrow().toDomain();
         assertThat(savedCoupon.couponID()).isEqualTo(coupon.couponID());
     }
 }
