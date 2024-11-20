@@ -1,4 +1,4 @@
-package com.coupon.management.event.infrastructure.out.repository.jpa;
+package com.coupon.management.event.infrastructure.out.repository;
 
 import com.coupon.management.event.infrastructure.out.repository.entity.EventEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
