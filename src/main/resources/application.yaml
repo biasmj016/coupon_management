@@ -21,7 +21,7 @@ redis:
 kafka:
   bootstrap-servers: localhost:9092
   consumer:
-    group-id: my-group
+    group-id: coupon
     auto-offset-reset: earliest
   producer:
     key-serializer: org.apache.kafka.common.serialization.StringSerializer
