@@ -11,4 +11,8 @@ public record Coupon(
         String memberID,
         LocalDate issuedAt,
         LocalDateTime usedAt
-) {}
+) {
+    public Coupon(Event event, String memberID) {
+        this(null, event, memberID, LocalDate.now(), null);
+    }
+}

@@ -38,6 +38,7 @@ public class CouponEntity {
 
     public CouponEntity(Coupon coupon) {
         this.event = toEventEntity(coupon.event());
+        this.memberID = coupon.memberID();
         this.issuedAt = coupon.issuedAt();
         this.usedAt = coupon.usedAt();
     }
