@@ -1,0 +1,7 @@
+POST http://localhost:8080/api/event/issue-coupon
+Content-Type: application/json
+
+{
+  "eventID": 3,
+  "memberID": "test_member"
+}

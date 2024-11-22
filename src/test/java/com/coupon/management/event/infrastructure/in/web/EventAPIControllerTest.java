@@ -30,14 +30,14 @@ class EventAPIControllerTest {
                 .build();
 
         var threadPool = Executors.newFixedThreadPool(32);
-        var latch = new CountDownLatch(100);
+        var latch = new CountDownLatch(150);
 
-        for (int i = 1; i <= 100; i++) {
-            String memberID = "member" + i;
+        for (int i = 1; i <= 150; i++) {
+            String memberID = "step_3_member" + i;
             threadPool.submit(() -> {
                 try {
                     client.post()
-                            .bodyValue(new IssueCouponRequest((long) 1, memberID))
+                            .bodyValue(new IssueCouponRequest((long) 3, memberID))
                             .retrieve()
                             .bodyToMono(String.class)
                             .log()
