@@ -1,6 +1,7 @@
 package com.coupon.management.event.infrastructure.in.web;
 
 import com.coupon.management.event.application.port.out.EventRepository;
+import com.coupon.management.event.infrastructure.in.web.request.IssueCouponRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,9 +33,11 @@ class EventAPIControllerTest {
         var latch = new CountDownLatch(100);
 
         for (int i = 1; i <= 100; i++) {
+            String memberID = "member" + i;
             threadPool.submit(() -> {
                 try {
                     client.post()
+                            .bodyValue(new IssueCouponRequest((long) 1, memberID))
                             .retrieve()
                             .bodyToMono(String.class)
                             .log()
