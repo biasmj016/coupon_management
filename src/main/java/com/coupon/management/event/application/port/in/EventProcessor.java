@@ -33,6 +33,7 @@ public interface EventProcessor {
             Event event = eventRepository.findById(eventID);
             logger.info("Issued count: {}, event max Issued Coupons : {}", issuedCount, event.maxIssuedCoupons());
             if (!event.isIssuable(issuedCount)) {
+                logger.error("All coupons have been issued. Issuance of coupons for this event ({}) is now discontinued.", eventID);
                 throw new IllegalArgumentException("All coupons have been issued.");
             }
         }
