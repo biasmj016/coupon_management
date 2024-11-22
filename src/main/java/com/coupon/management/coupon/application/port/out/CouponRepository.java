@@ -10,6 +10,8 @@ import java.util.NoSuchElementException;
 public interface CouponRepository {
     Coupon save(Coupon coupon);
     Coupon findByID(Long couponID);
+    Coupon findByMemberID(String memberID);
+    void useCoupon(Long couponID);
 
     @Repository
     class CouponRepositoryImpl implements CouponRepository {
@@ -29,6 +31,20 @@ public interface CouponRepository {
         public Coupon findByID(Long couponID) {
             return couponJpaRepository.findById(couponID)
                     .map(CouponEntity::toDomain)
+                    .orElseThrow(() -> new NoSuchElementException("Coupon not found"));
+        }
+
+        @Override
+        public Coupon findByMemberID(String memberID) {
+            return couponJpaRepository.findByMemberID(memberID)
+                    .map(CouponEntity::toDomain)
+                    .orElseThrow(() -> new NoSuchElementException("Coupon not found"));
+        }
+
+        @Override
+        public void useCoupon(Long couponID) {
+            couponJpaRepository.findById(couponID)
+                    .map(CouponEntity::useCoupon)
                     .orElseThrow(() -> new NoSuchElementException("Coupon not found"));
         }
     }

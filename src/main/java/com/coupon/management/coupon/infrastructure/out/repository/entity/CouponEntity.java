@@ -52,4 +52,10 @@ public class CouponEntity {
                 this.usedAt
         );
     }
+
+    public CouponEntity useCoupon() {
+        this.isUsed = true;
+        this.usedAt = LocalDateTime.now();
+        return this;
+    }
 }
