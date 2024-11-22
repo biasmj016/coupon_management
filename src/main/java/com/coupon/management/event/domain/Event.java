@@ -12,4 +12,8 @@ public record Event(
         LocalDate startAt,
         LocalDate endAt,
         int maxIssuedCoupons
-) {}
+) {
+    public boolean isIssuable(int issuedCouponCount) {
+        return maxIssuedCoupons > issuedCouponCount;
+    }
+}
