@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/api/event")
+@RestController
 public class EventAPIController {
     private static final Logger logger = LoggerFactory.getLogger(EventAPIController.class);
     private final EventProcessor eventProcessor;
@@ -17,7 +17,7 @@ public class EventAPIController {
         this.eventProcessor = eventProcessor;
     }
 
-    @PostMapping("/issue-coupon")
+    @PostMapping("/api/event/issue-coupon")
     public void issueCoupon(@RequestBody IssueCouponRequest request) throws InterruptedException {
         logger.info("Coupon issued :: {} for {}", request.getEventID(), request.getMemberID());
         eventProcessor.process(request.getEventID(), request.getMemberID());

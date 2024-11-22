@@ -3,5 +3,5 @@ Content-Type: application/json
 
 {
   "eventID": 3,
-  "memberID": "test_member"
+  "memberID": "member1"
 }
