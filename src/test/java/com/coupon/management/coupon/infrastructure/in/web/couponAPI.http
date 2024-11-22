@@ -1,0 +1,9 @@
+### Find Coupon by Member ID
+GET http://localhost:8080/api/coupon?memberID=member1
+Content-Type: application/json
+
+###
+
+### Use Coupon by Coupon ID
+POST http://localhost:8080/api/coupon/11/use
+Content-Type: application/json
