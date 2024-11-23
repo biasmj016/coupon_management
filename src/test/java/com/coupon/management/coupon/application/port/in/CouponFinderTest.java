@@ -2,6 +2,7 @@ package com.coupon.management.coupon.application.port.in;
 
 import com.coupon.management.coupon.application.port.out.CouponRepository;
 import com.coupon.management.coupon.domain.Coupon;
+import com.coupon.management.coupon.infrastructure.in.web.response.FindCouponResponse;
 import com.coupon.management.coupon.infrastructure.out.repository.CouponJpaRepository;
 import com.coupon.management.event.domain.Event;
 import com.coupon.management.event.infrastructure.out.repository.EventJpaRepository;
@@ -36,7 +37,7 @@ class CouponFinderTest {
 
     @Test
     void find() {
-        Coupon foundCoupon = couponFinderUseCase.find("coupon_finder_test");
-        assertEquals(coupon.couponID(), foundCoupon.couponID());
+        FindCouponResponse foundCoupon = couponFinderUseCase.find("coupon_finder_test");
+        assertEquals(coupon.couponID(), foundCoupon.getCouponID());
     }
 }
