@@ -11,6 +11,7 @@ public interface CouponRepository {
     Coupon save(Coupon coupon);
     Coupon findByID(Long couponID);
     Coupon findByMemberID(String memberID);
+    boolean findEverIssued(String memberID, Long eventID);
     void useCoupon(Long couponID);
 
     @Repository
@@ -39,6 +40,11 @@ public interface CouponRepository {
             return couponJpaRepository.findByMemberID(memberID)
                     .map(CouponEntity::toDomain)
                     .orElseThrow(() -> new NoSuchElementException("Coupon not found"));
+        }
+
+        @Override
+        public boolean findEverIssued(String memberID, Long eventID) {
+            return couponJpaRepository.countByMemberIDAndEventID(memberID, eventID) > 0;
         }
 
         @Override
