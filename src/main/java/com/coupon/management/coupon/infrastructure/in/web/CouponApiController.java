@@ -3,7 +3,10 @@ package com.coupon.management.coupon.infrastructure.in.web;
 import com.coupon.management.coupon.application.port.in.CouponFinder;
 import com.coupon.management.coupon.application.port.in.CouponUser;
 import com.coupon.management.coupon.infrastructure.in.web.response.FindCouponResponse;
+import com.coupon.management.global.response.ApiResponse;
 import org.springframework.web.bind.annotation.*;
+
+import static com.coupon.management.global.response.ApiResponse.success;
 
 @RestController
 public class CouponApiController {
@@ -16,12 +19,13 @@ public class CouponApiController {
     }
 
     @GetMapping("/api/coupon")
-    public FindCouponResponse find(@RequestParam String memberID) {
-        return couponFinder.find(memberID);
+    public ApiResponse<FindCouponResponse> find(@RequestParam String memberID) {
+        return success(couponFinder.find(memberID));
     }
 
     @PostMapping("/api/coupon/{couponID}/use")
-    public void find(@PathVariable Long couponID) {
+    public ApiResponse<Void> find(@PathVariable Long couponID) {
         couponUser.use(couponID);
+        return success();
     }
 }
