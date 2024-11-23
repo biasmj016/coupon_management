@@ -5,12 +5,13 @@ import com.coupon.management.coupon.infrastructure.out.repository.CouponJpaRepos
 import com.coupon.management.coupon.infrastructure.out.repository.entity.CouponEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public interface CouponRepository {
     Coupon save(Coupon coupon);
     Coupon findByID(Long couponID);
-    Coupon findByMemberID(String memberID);
+    List<Coupon> findByMemberID(String memberID);
     boolean findEverIssued(String memberID, Long eventID);
     void useCoupon(Long couponID);
 
@@ -36,10 +37,11 @@ public interface CouponRepository {
         }
 
         @Override
-        public Coupon findByMemberID(String memberID) {
+        public List<Coupon> findByMemberID(String memberID) {
             return couponJpaRepository.findByMemberID(memberID)
+                    .stream()
                     .map(CouponEntity::toDomain)
-                    .orElseThrow(() -> new NoSuchElementException("Coupon not found"));
+                    .toList();
         }
 
         @Override

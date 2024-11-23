@@ -62,8 +62,7 @@ class CouponRepositoryTest {
     @Test
     void findByMemberID() {
         couponRepository.save(new Coupon(event, "member2"));
-        Coupon coupon = couponRepository.findByMemberID("member2");
-        assertNotNull(coupon);
+        assertNotNull(couponRepository.findByMemberID("member2"));
     }
 
     @Test
