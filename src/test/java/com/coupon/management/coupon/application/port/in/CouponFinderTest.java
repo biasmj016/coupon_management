@@ -26,18 +26,16 @@ class CouponFinderTest {
     @Autowired
     private EventJpaRepository eventJpaRepository;
 
-    private Coupon coupon;
-
     @BeforeEach
     void setUp() {
         CouponRepository couponRepository = new CouponRepository.CouponRepositoryImpl(couponJpaRepository);
         Event event = eventJpaRepository.findById(1L).orElseThrow().toDomain();
-        coupon = couponRepository.save(new Coupon(event, "coupon_finder_test"));
+        couponRepository.save(new Coupon(event, "coupon_finder_test"));
     }
 
     @Test
     void find() {
         FindCouponResponse foundCoupon = couponFinderUseCase.find("coupon_finder_test");
-        assertEquals(coupon.couponID(), foundCoupon.getCouponID());
+        assertEquals(1, foundCoupon.getCouponDetails().size());
     }
 }

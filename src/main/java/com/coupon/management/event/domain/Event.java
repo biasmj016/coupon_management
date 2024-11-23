@@ -16,4 +16,8 @@ public record Event(
     public boolean isIssuable(int issuedCouponCount) {
         return maxIssuedCoupons > issuedCouponCount;
     }
+
+    public String formatEventType() {
+        return eventType.getDescription();
+    }
 }
