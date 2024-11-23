@@ -47,7 +47,7 @@ class CouponJpaRepositoryTest {
     @BeforeEach
     void setUp() {
         event = eventJpaRepository.findById(1L).orElseThrow().toDomain();
-        couponEntity = new CouponEntity(new Coupon(event, "member1"));
+        couponEntity = new CouponEntity(new Coupon(event, "coupon_jpa_test"));
         couponJpaRepository.save(couponEntity);
     }
 
